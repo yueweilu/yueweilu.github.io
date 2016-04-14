@@ -80,15 +80,19 @@
 
 
 
-<meta name="description" content="iOS andriod">
-<meta property="og:type" content="website">
-<meta property="og:title" content="coderCP">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="我们都知道WebView可以实现点击链接查看详情的功能，无论是APP内显示还是浏览器外显示，都很自如。但是WebView带来的高内存，网络请求耗时也是不可避免的。现在我们要仿照WebView的这一功能，给TextView添加链接跳转。
+比如有这样一个需求，在”第一个界面是正常内容的，第一个界面中只有一个TextView，第一个界面中的TextView通过点击跳转，跳转到第二个界面。“这个内容中，设">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TexTView的ClickSpan">
+<meta property="og:url" content="http://yoursite.com/2016/04/14/TexTView的ClickSpan/index.html">
 <meta property="og:site_name" content="coderCP">
-<meta property="og:description" content="iOS andriod">
+<meta property="og:description" content="我们都知道WebView可以实现点击链接查看详情的功能，无论是APP内显示还是浏览器外显示，都很自如。但是WebView带来的高内存，网络请求耗时也是不可避免的。现在我们要仿照WebView的这一功能，给TextView添加链接跳转。
+比如有这样一个需求，在”第一个界面是正常内容的，第一个界面中只有一个TextView，第一个界面中的TextView通过点击跳转，跳转到第二个界面。“这个内容中，设">
+<meta property="og:updated_time" content="2016-04-14T09:33:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="coderCP">
-<meta name="twitter:description" content="iOS andriod">
+<meta name="twitter:title" content="TexTView的ClickSpan">
+<meta name="twitter:description" content="我们都知道WebView可以实现点击链接查看详情的功能，无论是APP内显示还是浏览器外显示，都很自如。但是WebView带来的高内存，网络请求耗时也是不可避免的。现在我们要仿照WebView的这一功能，给TextView添加链接跳转。
+比如有这样一个需求，在”第一个界面是正常内容的，第一个界面中只有一个TextView，第一个界面中的TextView通过点击跳转，跳转到第二个界面。“这个内容中，设">
 
 
 
@@ -106,7 +110,7 @@
   };
 </script>
 
-  <title> coderCP </title>
+  <title> TexTView的ClickSpan | coderCP </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -127,9 +131,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -206,9 +208,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -228,10 +230,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/04/14/TexTView的ClickSpan/" itemprop="url">
-                  TexTView的ClickSpan
-                </a>
+                TexTView的ClickSpan
               
             
           </h1>
@@ -271,9 +270,7 @@
       
 
       
-        
-          
-            <p>我们都知道WebView可以实现点击链接查看详情的功能，无论是APP内显示还是浏览器外显示，都很自如。但是WebView带来的高内存，网络请求耗时也是不可避免的。现在我们要仿照WebView的这一功能，给TextView添加链接跳转。</p>
+        <p>我们都知道WebView可以实现点击链接查看详情的功能，无论是APP内显示还是浏览器外显示，都很自如。但是WebView带来的高内存，网络请求耗时也是不可避免的。现在我们要仿照WebView的这一功能，给TextView添加链接跳转。</p>
 <p>比如有这样一个需求，在”第一个界面是正常内容的，第一个界面中只有一个TextView，第一个界面中的TextView通过点击跳转，跳转到第二个界面。“这个内容中，设置关键字”第一个“和“第二个”分别用浏览器打开“<a href="http://3g.cnfol.com/&quot;和&quot;http://blog.csdn.net/lxm20819”两个网址。我们首先想到的应该是SpannableString的ClickSpan方法，关于SpannableString的一些其他方法，可以查看，可以自行查看问谷歌。我这里主要讲一下ClickSpan。ClickSpan主要有两个方法" target="_blank" rel="external">http://3g.cnfol.com/&quot;和&quot;http://blog.csdn.net/lxm20819”两个网址。我们首先想到的应该是SpannableString的ClickSpan方法，关于SpannableString的一些其他方法，可以查看，可以自行查看问谷歌。我这里主要讲一下ClickSpan。ClickSpan主要有两个方法</a></p>
 <p>##</p>
 <p>### </p>
@@ -284,16 +281,18 @@
 <p>接下来就是要对代码的优化处理，我们添加一个接口，将里面的颜色设置和点击处理同步出去，这样可以自由定制不同的显示。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">$     public void <span class="built_in">set</span>Click(String str, final ArrayList&lt;TopicLinkBean&gt; list, final SetSpanListener listener) &#123;  </span><br><span class="line">final SpannableString spannableString = new SpannableString(str);  </span><br><span class="line"><span class="keyword">if</span> (list != null &amp;&amp; list.size() != 0) &#123;  </span><br><span class="line"></span><br><span class="line">String content = spannableString.toString();  </span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (int i = 0; i &lt; list.size(); i++) &#123;  </span><br><span class="line">final TopicLinkBean topicLinkBean = list.get(i);  </span><br><span class="line">final String data =topicLinkBean.getContent();  </span><br><span class="line">String temp = content;  </span><br><span class="line">int startNew = 0;  </span><br><span class="line">int startOld = 0;  </span><br><span class="line"><span class="keyword">while</span> (temp.contains(data)) &#123;  </span><br><span class="line">spannableString.setSpan(new <span class="function"><span class="title">ClickableSpan</span></span>() &#123;  </span><br><span class="line"></span><br><span class="line">@Override  </span><br><span class="line">public void updateDrawState(TextPaint ds) &#123;  </span><br><span class="line">// TODO Auto-generated method stub  </span><br><span class="line">super.updateDrawState(ds);  </span><br><span class="line">listener.updateDrawState(ds);  </span><br><span class="line">ds.setUnderlineText(<span class="literal">false</span>);  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">@Override  </span><br><span class="line">public void onClick(View widget) &#123;  </span><br><span class="line">listener.onClick(widget, topicLinkBean);  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">&#125;, startOld + temp.indexOf(data), startOld + temp.indexOf(data) + data.length(),  </span><br><span class="line">Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);  </span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>Text(spannableString);  </span><br><span class="line"><span class="built_in">set</span>MovementMethod(LinkMovementMethod.getInstance());  </span><br><span class="line">startNew = temp.indexOf(data) + data.length();  </span><br><span class="line">startOld += startNew;  </span><br><span class="line">temp = temp.substring(startNew);  </span><br><span class="line">&#125;  </span><br><span class="line">&#125;  </span><br><span class="line">&#125; <span class="keyword">else</span> &#123;  </span><br><span class="line"><span class="built_in">set</span>Text(spannableString);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>ClickSpan的介绍就到这里了，有不足之处欢迎批评指导！</p>
 
-          
-        
       
     </div>
     
     <div>
       
+        
+      
     </div>
 
     <div>
+      
+        
       
     </div>
 
@@ -301,309 +300,32 @@
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/04/14/my-new-post-1/" rel="next" title="hello world everybody">
+                <i class="fa fa-chevron-left"></i> hello world everybody
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/04/14/my-new-post-1/" itemprop="url">
-                  hello world everybody
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-14T17:08:12+08:00" content="2016-04-14">
-              2016-04-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>今天的天气还不错</p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/14/my-new-post/" itemprop="url">
-                  我来了
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-14T16:10:35+08:00" content="2016-04-14">
-              2016-04-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>世界你好，我来了。你好吗？</p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/14/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-14T15:55:55+08:00" content="2016-04-14">
-              2016-04-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -611,6 +333,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -630,8 +356,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/default_avatar.jpg"
@@ -667,6 +402,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -763,6 +509,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
